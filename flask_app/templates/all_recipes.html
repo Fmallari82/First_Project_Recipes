@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/all_recipes.css') }}">
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <title>All Recipes</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="col-4 d-flex align-items-center">
+            <ul class="navbar-nav ">
+                <li class="nav-item mx-3">
+                    <a class="nav-link text-white" href="/recipe/show_all">View Recipes</a>
+                </li>
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-white" href="/recipe/add">Submit Creation</a>
+                </li>
+                {% if session['user_id'] is defined %}
+                <li class="nav-item mx-1">
+                    <a class="nav-link text-white" href="/user/dashboard">Dashboard</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-center">
+            <a href="/">
+                <h1>Gnarly Creations</h1>
+            </a>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-end px-5">
+            <form class="d-flex" role="search">
+                <input class="search form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-white  text-white" type="submit">Search</button>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {% if session['user_id'] is defined %}
+                        <a class="nav-link text-white" href="/user/logout">Logut</a>
+                        {% else %}
+                        <a class="nav-link text-white" href="/user/login_registration">Login</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </form>
+
+        </div>
+    </nav>
+
+    <div class="container d-flex justify-content-around align-items-center mt-5">
+        {% for recipe in all_recipes %}
+        <div class="card  border-dark" style="width: 18rem;">
+            <div class="card-img p-3">
+
+
+                <img src="{{url_for('display_image', filename=filename)}}" class="card-img-top">
+
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">{{recipe.name}}</h5>
+                <a href="/recipe/{{recipe.id}}/show" class="btn btn-primary">View Recipe</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+
+
+    <script>
+        $(document).ready(function () {
+            // File type validation
+            $("#fileInput").change(function () {
+                var fileLength = this.files.length;
+                var match = ["image/jpeg", "image/png", "image/jpg", "image/gif"];
+                var i;
+                for (i = 0; i < fileLength; i++) {
+                    var file = this.files[i];
+                    var imagefile = file.type;
+                    if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]) || (imagefile == match[3]))) {
+                        alert('Please select a valid image file (JPEG/JPG/PNG/GIF).');
+                        $("#fileInput").val('');
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

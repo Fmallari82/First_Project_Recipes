@@ -1,0 +1,134 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: 'absolute';
+    src: url(../fonts/AbsoluteNeonScript.ttf);
+}
+
+@font-face {
+    font-family: 'neon';
+    src: url(../fonts/Neon.ttf);
+}
+
+@font-face {
+    font-family: 'lightsaber';
+    src: url(../fonts/Lightsaber.ttf);
+}
+
+h1 {
+    font-family: 'absolute';
+    color: black;
+    font-size: 6rem;
+    font-weight: 600;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px rgb(249, 51, 114),
+        0 0 82px rgb(249, 51, 114),
+        0 0 92px rgb(249, 51, 114),
+        0 0 102px rgb(249, 51, 114),
+        0 0 151px rgb(249, 51, 114);
+}
+
+.btn {
+    border: 2px solid #fff;
+    height: 2rem;
+    margin-right: 10px;
+}
+
+.search {
+    height: 2rem;
+}
+
+body {
+    background-color: #010a01;
+    background-image: radial-gradient(transparent, rgba(0, 0, 0, 0.9)),
+    url(../images/bricks_regular.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+
+    .navbar {
+        justify-content: center;
+        background-color: rgba(8, 7, 7, 0.571);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .navbar h1 {
+        font-family: 'lightsaber';
+        font-size: 50px;
+    }
+
+
+    /* a {
+    font-family: 'absolute';
+    font-weight: 1000;
+    position: relative;
+    background-color: transparent;
+    color: rgb(9, 9, 9);
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    transform: .5s;
+    border-radius: 90%;
+} */
+
+    /* a:hover {
+    letter-spacing: 0.25em;
+    background-color: transparent;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px rgb(249, 51, 114),
+        0 0 82px rgb(249, 51, 114),
+        0 0 92px rgb(249, 51, 114),
+        0 0 102px rgb(249, 51, 114),
+        0 0 151px rgb(249, 51, 114);
+
+}
+
+a::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background-color: transparent;
+    color: #fff;
+    text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px rgb(249, 51, 114),
+        0 0 82px rgb(249, 51, 114),
+        0 0 92px rgb(249, 51, 114),
+        0 0 102px rgb(249, 51, 114),
+        0 0 151px rgb(249, 51, 114);
+
+}
+
+a span {
+    position: relative;
+    z-index: 1;
+    font-size: 50px;
+    text-decoration: wavy;
+} */

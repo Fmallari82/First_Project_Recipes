@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+
+    <title>new recipes</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <div class="col-4 d-flex align-items-center">
+            <p class="text-white"> Welcome, {{user.first_)name}} </p>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <div class="dropdown">
+                        <button class="dropbtn">Menu</button>
+                        <div class="dropdown-content">
+                            <a href="/home">Home</a>
+                            <a href="/">Title Page</a>
+                            <a href="/user/dashboard">dashboard</a>
+                            <a href="/user/login_registration">Login</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div></div>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-center">
+            <h1>Gnarly Creations</h1>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-end px-5">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+                <a href="/user/logout" class="btn bg-primary text-white ml-3">Log Out</a>
+            </form>
+
+        </div>
+    </nav>
+    </menu>
+        <main>
+        <div class="container d-flex p-2">
+            <div class="container border border-dark p-3 m-3 row bg-secondary text-white">
+                <form action="/recipe/{{recipe.id}}/update" method="post">
+                    <div class="mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name" value="{{recipe.name}}">
+                        {% for message in get_flashed_messages(category_filter=["err_recipe_name_edit"]) %}
+                        <span class="text-danger">{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" style="height: 6rem" name="description" id="description" value="{{recipe.description}}">
+                        {% for message in get_flashed_messages(category_filter=["err_recipe_description_edit"]) %}
+                        <span class="text-danger">{{ message }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="instructions">Instructions</label>
+                        <input type="text" class="form-control" style="height: 6rem" style="word-wrap: break-word" style="word-break: break-all" name="instructions" id="instructions" value="{{recipe.instructions}}">
+                        {% for message in get_flashed_messages(category_filter=["err_recipe_instructions_edit"]) %}
+                        <span class="text-danger">{{ message }}</span>
+                        {% endfor %}
+                    </div>
+            </div>
+            <div class="container">
+                <div class="container border border-dark p-3 m-3 row bg-secondary text-white"> 
+                    <label for="created_at">Date Created/Made</label>
+                    <div class="mb-3">
+                        
+                        <input type="date" class="form-control" name="date_made" id="date_made" value="{{recipe.date_made}}">
+                        <!-- {% for message in get_flashed_messages(category_filter=["err_user_email_login"]) %}
+                            <span class="text-danger">{{ message }}</span>
+                            {% endfor %} -->
+                            <label>Under 30 minutes?</label><br>
+                            {% if  recipe[is_under] == '1' %}
+                            <div class="radio-input">        
+                                <input type="radio" name="is_under" value="" id="is_under" value="1" checked>
+                                <label for="is_under">Yes</label>
+                                <input type="radio"name="" value="0">
+                                <label for="">No</label>
+                                
+                                {% else %}
+                                <div class="radio-input">        
+                                    <input type="radio" name="is_under" value="" id="is_under" value="1" >
+                                    <label for="is_under">Yes</label>
+                                    <input type="radio"name="" value="0" checked>
+                                    <label for="">No</label>
+                                    
+                                {% endif %}
+                            </div>
+                    </div>
+                    <button class="btn btn-success mb-3">Submit</button>
+                </form>
+            </div>        
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</body>
+</html>
